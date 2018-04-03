@@ -1,0 +1,31 @@
+apply plugin: 'java'
+
+version =  '1.0'
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    // https://mvnrepository.com/artifact/com.vmware.xenon/xenon-common
+    compile group: 'com.vmware.xenon', name: 'xenon-common', version: '1.6.1'
+    //compile "org.telegram:telegrambots:3.5"
+    compile 'com.github.pengrad:java-telegram-bot-api:3.5.2'
+}
+
+jar {
+    baseName = 'coinhelper'
+    version =  '0.1.0'
+}
+
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Version': version,
+                'Main-Class': 'dev.Host'
+    }
+    baseName = project.name + '-fat'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
