@@ -1,5 +1,5 @@
 # coinhelper (@howdyCoinBot)
-A telegram bot which shows current crypto currency prices
+A telegram bot that shows current crypto currency prices
 
 Quick demo
 https://youtu.be/a3RUroSXKXU
